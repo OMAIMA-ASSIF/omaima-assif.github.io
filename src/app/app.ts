@@ -32,11 +32,26 @@ import { ThemeService } from './services/theme.service';
     <app-navbar [activeSection]="activeSection"></app-navbar>
 
     <main class="main-content min-h-screen w-full">
+
+      <!--background glows-->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-pink-600/20 rounded-full blur-[100px] animate-pulse"></div>
+        <div class="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] bg-purple-600/20 rounded-full blur-[100px] animate-pulse" style="animation-delay: 3s;"></div>
+      </div>
+
+      <!--the scars-->
+      <div class="absolute inset-0 opacity-[0.15] animate-in fade-in duration-1000 pointer-events-none"
+          style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px);
+                  background-size: 50px 50px;
+                  mask-image: linear-gradient(to bottom, white 0%, transparent 800px);
+                  -webkit-mask-image: linear-gradient(to bottom, white 0%, transparent 800px);">
+      </div>
+
       <section id="home" class="section">
         <app-home></app-home>
       </section>
 
-      <section id="about" class="section">
+      <section id="about" class="section ">
         <app-about></app-about>
       </section>
 

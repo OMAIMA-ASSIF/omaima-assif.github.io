@@ -13,10 +13,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
       class="min-h-screen py-24 relative overflow-hidden transition-colors duration-700 bg-transparent"
       [ngClass]="(isDarkMode$ | async) ? 'text-white' : 'text-slate-900'">
 
-      <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[120px] animate-pulse"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-pink-600/10 rounded-full blur-[120px] animate-pulse"></div>
-      </div>
+      
 
       <div class="container mx-auto px-8 md:px-16 lg:px-24 max-w-7xl relative z-10">
 

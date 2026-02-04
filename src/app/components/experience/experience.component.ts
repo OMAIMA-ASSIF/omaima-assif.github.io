@@ -11,8 +11,6 @@ import { ThemeService } from '../../services/theme.service';
       class="min-h-screen py-24 relative overflow-hidden transition-colors duration-500 bg-transparent"
       [ngClass]="(isDarkMode$ | async) ? 'text-white' : 'text-slate-900'">
 
-      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-[120px] pointer-events-none"></div>
-
       <div class="container mx-auto px-8 md:px-16 lg:px-24 max-w-7xl relative z-10">
 
         <div class="mb-24">

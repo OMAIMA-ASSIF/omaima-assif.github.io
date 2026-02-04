@@ -12,11 +12,6 @@ import { ThemeService } from '../../services/theme.service';
       id="certifications"
       class="min-h-screen flex items-center py-24 transition-colors duration-300 relative overflow-hidden bg-transparent"
     >
-      <!-- Background decoration -->
-      <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-1/2 left-1/4 w-96 h-96 bg-purple-600 rounded-full filter blur-3xl"></div>
-        <div class="absolute top-1/2 right-1/4 w-96 h-96 bg-pink-600 rounded-full filter blur-3xl"></div>
-      </div>
 
       <div class="container mx-auto px-6 relative z-10">
         <div class="text-center mb-16 animate-fade-in-down">
