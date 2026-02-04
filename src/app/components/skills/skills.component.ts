@@ -107,25 +107,25 @@ export class SkillsComponent {
       id: 'ai',
       title: 'AI & ML',
       icon: this.getIcon(`<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><circle cx="12" cy="12" r="3"/>`),
-      skills: ['Python', 'Streamlit', 'FastAPI', 'Flask', 'LangChain', 'ChromaDB', 'Qdrant', 'Neo4j', 'Ollama', 'scikitlearn']
+      skills: ['Python', 'Flask', 'LangChain', 'ChromaDB', 'Qdrant', 'Neo4j', 'Ollama', 'scikitlearn']
     },
     {
       id: 'frontend',
       title: 'Frontend',
       icon: this.getIcon(`<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/>`),
-      skills: ['Angular', 'React', 'TypeScript', 'JS', 'Tailwind', 'Bootstrap', 'HTML', 'CSS']
+      skills: ['Angular', 'React', 'JavaScript', 'Streamlit','Tailwind', 'Bootstrap', 'HTML', 'CSS']
     },
     {
       id: 'backend',
       title: 'Backend',
       icon: this.getIcon(`<rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/>`),
-      skills: ['NodeJS', 'Express', 'PHP', 'Java', 'JavaFX', 'C', 'Linux']
+      skills: ['NodeJS', 'Express', 'FastAPI', 'PHP', 'Java', 'JavaFX', 'C', 'Linux']
     },
     {
       id: 'data',
       title: 'Data & Cloud',
       icon: this.getIcon(`<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>`),
-      skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis']
+      skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis', 'aws', 'docker']
     }
   ];
 
