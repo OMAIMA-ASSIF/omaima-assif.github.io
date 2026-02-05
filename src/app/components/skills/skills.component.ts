@@ -8,7 +8,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <section id="skills" class="min-h-screen flex items-center py-32 relative overflow-hidden bg-transparent">
+    <section id="skills" class="min-h-screen flex items-center py-64 relative overflow-hidden bg-transparent">
 
       <div class="absolute inset-0 pointer-events-none overflow-hidden">
         <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[120px] animate-pulse opacity-30"

@@ -8,58 +8,78 @@ import { ThemeService } from '../../services/theme.service';
   imports: [CommonModule],
   template: `
     <section id="experience"
-      class="min-h-screen py-24 relative overflow-hidden transition-colors duration-500 bg-transparent"
-      [ngClass]="(isDarkMode$ | async) ? 'text-white' : 'text-slate-900'">
+      class="min-h-screen py-48 relative overflow-hidden transition-colors duration-1000">
 
-      <div class="container mx-auto px-8 md:px-16 lg:px-24 max-w-7xl relative z-10">
+      <div class="container mx-auto px-6 relative z-10 flex flex-col items-center">
 
-        <div class="mb-24">
-          <h2 class="text-6xl md:text-8xl font-black tracking-tighter leading-none mb-8">
-            WORK<br/>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">HISTORY</span>
+        <div class="text-center group">
+          <h2 class="text-6xl md:text-[9rem] font-[1000] tracking-tighter uppercase italic leading-[0.8] mb-8 transition-all duration-1000"
+              [ngClass]="(isDarkMode$ | async) ? 'text-white' : 'text-slate-900'">
+            EXP<span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500">ER</span>IENCE
           </h2>
-          <div class="h-px w-32 bg-gradient-to-r from-purple-500 to-transparent"></div>
+          <div class="h-5 md:h-10"></div>
+          <p class="font-mono tracking-[0.5em] uppercase text-[9px] transition-colors duration-700 opacity-40"
+             [ngClass]="(isDarkMode$ | async) ? 'text-white' : 'text-slate-900'">
+            The Path of <span class="italic font-bold">Evolution</span>
+          </p>
         </div>
 
-        <div class="space-y-20"> <div *ngFor="let exp of experience; let i = index"
-            class="relative grid md:grid-cols-12 gap-8 md:gap-12 group">
+        <div class="h-20 md:h-42"></div>
 
-            <div class="md:col-span-3">
-              <div class="sticky top-24">
-                <p class="text-sm font-mono tracking-widest opacity-40 group-hover:opacity-100 group-hover:text-purple-400 transition-all duration-300">
-                  {{ exp.period }}
-                </p>
-                <div class="mt-4 h-0.5 w-8 bg-white/10 group-hover:w-16 group-hover:bg-purple-500 transition-all duration-500"></div>
-              </div>
-            </div>
+        <div class="w-full max-w-4xl relative">
 
-            <div class="md:col-span-9">
-              <div class="flex flex-col">
-                <h3 class="text-3xl md:text-5xl font-bold tracking-tight mb-2 group-hover:translate-x-2 transition-transform duration-300">
-                  {{ exp.title }}
-                </h3>
+          <div class="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px hidden md:block"
+               [ngClass]="(isDarkMode$ | async) ? 'bg-white/5' : 'bg-slate-200'"></div>
 
-                <p class="text-xl font-medium text-purple-500/90 mb-6">
-                  {{ exp.company }}
-                </p>
+          <div class="space-y-48">
+            @for (exp of experience; track exp.title; let i = $index) {
+              <div class="relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-32 group">
 
-                <p class="text-lg opacity-60 leading-relaxed max-w-3xl mb-8">
-                  {{ exp.description }}
-                </p>
-
-                <div class="flex flex-wrap gap-3">
-                  <span *ngFor="let tag of exp.tags"
-                    class="px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.2em] border border-white/10 bg-white/5 transition-all hover:bg-white/10 hover:border-white/20">
-                    {{ tag }}
-                  </span>
+                <div class="md:text-right flex flex-col md:items-end justify-center">
+                  <span class="font-mono text-[9px] tracking-[0.3em] text-pink-500 font-black mb-1">{{ exp.period }}</span>
+                  <h3 class="text-lg md:text-xl font-bold uppercase tracking-tight transition-all duration-500 group-hover:text-pink-500"
+                      [ngClass]="(isDarkMode$ | async) ? 'text-white' : 'text-slate-900'">
+                    {{ exp.company }}
+                  </h3>
                 </div>
+
+                <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-20 hidden md:block">
+                  <div class="w-1 h-1 rounded-full transition-all duration-500 bg-pink-500 shadow-[0_0_10px_#ec4899] group-hover:scale-[2.5] group-hover:shadow-[0_0_20px_#ec4899]"></div>
+                </div>
+
+                <div class="flex flex-col justify-center">
+                  <h4 class="text-md md:text-lg font-black italic uppercase mb-2 tracking-wide"
+                      [ngClass]="(isDarkMode$ | async) ? 'text-white/90' : 'text-slate-800'">
+                    {{ exp.title }}
+                  </h4>
+                  <p class="text-[10px] md:text-[11px] leading-relaxed max-w-xs opacity-40 group-hover:opacity-100 transition-opacity duration-700"
+                     [ngClass]="(isDarkMode$ | async) ? 'text-white' : 'text-slate-600'">
+                    {{ exp.description }}
+                  </p>
+
+                  <div class="mt-4 flex flex-wrap gap-3">
+                    @for (tag of exp.tags; track tag) {
+                      <span class="text-[7px] font-bold uppercase tracking-widest opacity-20 group-hover:opacity-100 group-hover:text-orange-500 transition-all">
+                        // {{ tag }}
+                      </span>
+                    }
+                  </div>
+                </div>
+
+                <span class="absolute -left-20 top-1/2 -translate-y-1/2 font-mono text-[8px] opacity-5 rotate-90 hidden xl:block uppercase tracking-[1em]"
+                      [ngClass]="(isDarkMode$ | async) ? 'text-white' : 'text-slate-900'">
+                  Trace_0{{experience.length - i}}
+                </span>
               </div>
-            </div>
+            }
           </div>
         </div>
       </div>
     </section>
-  `
+  `,
+  styles: [`
+    :host { display: block; }
+  `]
 })
 export class ExperienceComponent {
   private themeService = inject(ThemeService);
@@ -68,24 +88,24 @@ export class ExperienceComponent {
   experience = [
     {
       title: 'Social Media Manager',
-      company: 'GDG on Campus - ENSET Mohammedia',
-      period: 'OCT 2025 — PRESENT',
-      description: 'Driving the digital narrative for the developer community. I focus on creating high-impact content that simplifies complex engineering concepts for a broad student audience.',
-      tags: ['Strategy', 'Leadership', 'Design']
+      company: 'GDG Mohammedia',
+      period: 'OCT 2025 — PRES',
+      description: 'Architecting digital ecosystems for the next generation of engineers. Merging tech with narrative.',
+      tags: ['Strategy', 'Design', 'PR']
     },
     {
       title: 'CS Tutor',
-      company: 'Academic Mentorship',
-      period: '4 MONTHS (2025)',
-      description: 'Delivered deep-dive sessions on Computer Architecture and Data Structures. Focused on optimizing student logic for low-level programming and memory-efficient algorithms.',
-      tags: ['Architecture', 'C', 'Mentorship']
+      company: 'Mentorship',
+      period: 'OCT 2025 — JAN 2026',
+      description: 'Simplifying the core of computation. Teaching low-level C optimization and architecture.',
+      tags: ['C', 'Time management', 'Arch']
     },
     {
-      title: 'Full Stack Developer',
+      title: 'Full Stack Dev',
       company: 'SUEZ',
-      period: 'JULY — AUG 2025',
-      description: 'Modernized internal workflows during a 2-month internship. Developed full-stack features to handle environmental data monitoring with a focus on real-time performance.',
-      tags: ['ERP 365', 'Node.js', 'PostgreSQL', 'Expressjs', 'Reactjs', 'TailwindCSS', 'postman']
+      period: 'JUL — AUG 2025',
+      description: 'Building high-performance tools for environmental monitoring. Data-driven web engineering.',
+      tags: ['ERP 365','Node.js','Expressjs', 'React', 'PostgreSQL', 'Tailwind', 'Postman']
     }
   ];
 }
