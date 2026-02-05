@@ -38,7 +38,7 @@ import { ThemeService } from '../../services/theme.service';
                   Omaima, 21 years old,
                 </span>
                 from Casablanca.
-                <span class="opacity-80">Software & distributed computing systems at ENSET Mohammedia.</span>
+                <span class="opacity-80">ENSET Mohammedia Engineering Degree in Software and Distributed Computing Systems (Year 2)</span>
               </ng-template>
             </h3>
 
