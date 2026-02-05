@@ -44,8 +44,8 @@ import { ThemeService } from '../../services/theme.service';
                 <div #card class="relative h-64 w-full min-w-[260px] transition-all duration-500 ease-out transform-gpu">
                   <div class="relative h-full rounded-[2rem] border backdrop-blur-md flex flex-col items-center justify-center p-6 overflow-hidden transition-all duration-500"
                     [ngClass]="(isDarkMode$ | async)
-                      ? 'bg-slate-950/40 border-white/10 hover:border-purple-500/50'
-                      : 'bg-white/70 border-white shadow-xl shadow-slate-200/50 hover:border-purple-400'">
+                      ? 'bg-slate-950/40 border-white/10 hover:border-purple-500/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]'
+                      : 'bg-white/40 border-purple-200/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] hover:border-purple-500 hover:bg-white/80 hover:shadow-[0_20px_40px_rgba(168,85,247,0.1)]'">
 
                     <div class="relative z-10 w-full h-32 flex items-center justify-center">
                        <div class="absolute w-16 h-16 bg-purple-500/10 rounded-full blur-2xl"></div>
