@@ -40,55 +40,63 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
           <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl w-full justify-items-center">
             @for (category of categories; track category.id) {
               <div class="relative group w-full flex justify-center" (mousemove)="handleParallax($event, card)" (mouseleave)="resetParallax(card)">
-                <div #card class="relative transition-all duration-300 ease-out transform-gpu w-full max-w-[28rem]">
+                <div #card
+                     class="relative transition-all duration-500 ease-out transform-gpu w-full"
+                     [ngClass]="activeCategory() === category.id ? 'md:col-span-2 max-w-6xl' : 'max-w-[28rem]'">
 
                   <div
                     (click)="toggleCategory(category.id)"
-                    class="relative h-80 cursor-pointer rounded-[3.5rem] border backdrop-blur-xl flex flex-col items-center justify-center p-8 overflow-hidden transition-all duration-500 w-full"
-                    [ngClass]="(isDarkMode$ | async)
-                      ? (activeCategory() === category.id ? 'border-purple-500/60 bg-purple-500/10 shadow-[0_0_40px_rgba(168,85,247,0.2)]' : 'bg-white/[0.03] border-white/10 hover:border-white/20')
-                      : (activeCategory() === category.id ? 'border-purple-400 bg-white/80 shadow-[0_20px_50px_rgba(168,85,247,0.15)]' : 'bg-white/40 border-white/60 shadow-xl shadow-slate-200/20 hover:border-purple-300') "
+                    class="relative cursor-pointer rounded-[3.5rem] border backdrop-blur-xl flex flex-col items-center justify-center p-8 overflow-hidden transition-all duration-500 w-full"
+                    [ngClass]="{
+                      'h-80': activeCategory() !== category.id,
+                      'h-auto min-h-[32rem]': activeCategory() === category.id,
+                      'border-purple-500/60 bg-purple-500/10 shadow-[0_0_40px_rgba(168,85,247,0.2)]': (isDarkMode$ | async) && activeCategory() === category.id,
+                      'bg-white/[0.03] border-white/10 hover:border-white/20': (isDarkMode$ | async) && activeCategory() !== category.id,
+                      'border-purple-400 bg-white/80 shadow-[0_20px_50px_rgba(168,85,247,0.15)]': !(isDarkMode$ | async) && activeCategory() === category.id,
+                      'bg-white/40 border-white/60 shadow-xl shadow-slate-200/20 hover:border-purple-300': !(isDarkMode$ | async) && activeCategory() !== category.id
+                    }"
                   >
-                    <div class="glow-element absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                         [style.background]="'radial-gradient(circle at ' + mouseX + 'px ' + mouseY + 'px, rgba(168, 85, 247, 0.1) 0%, transparent 70%)'">
-                    </div>
+                    <!-- Glow effect on hover -->
+                    @if (activeCategory() !== category.id) {
+                      <div class="glow-element absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                           [style.background]="'radial-gradient(circle at ' + mouseX + 'px ' + mouseY + 'px, rgba(168, 85, 247, 0.1) 0%, transparent 70%)'">
+                      </div>
+                    }
 
-                    <div class="relative z-10 w-24 h-24 mb-6 transition-all duration-700 group-hover:scale-110"
-                         [ngClass]="(isDarkMode$ | async) ? 'text-purple-400 group-hover:drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]' : 'text-purple-600 group-hover:drop-shadow-[0_10px_10px_rgba(168,85,247,0.2)]'"
-                         [innerHTML]="category.icon"></div>
+                    <!-- Collapsed state -->
+                    @if (activeCategory() !== category.id) {
+                      <div class="relative z-10 w-24 h-24 mb-6 transition-all duration-700 group-hover:scale-110"
+                           [ngClass]="(isDarkMode$ | async) ? 'text-purple-400 group-hover:drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]' : 'text-purple-600 group-hover:drop-shadow-[0_10px_10px_rgba(168,85,247,0.2)]'"
+                           [innerHTML]="category.icon"></div>
 
-                    <h3 class="relative z-10 text-3xl font-black tracking-tight uppercase transition-all duration-500 group-hover:tracking-[0.1em]"
-                        [ngClass]="(isDarkMode$ | async) ? 'text-white' : 'text-slate-800'">
-                      {{ category.title }}
-                    </h3>
+                      <h3 class="relative z-10 text-3xl font-black tracking-tight uppercase transition-all duration-500 group-hover:tracking-[0.1em]"
+                          [ngClass]="(isDarkMode$ | async) ? 'text-white' : 'text-slate-800'">
+                        {{ category.title }}
+                      </h3>
 
-                    <div class="absolute top-10 right-12 flex gap-2">
-                      <span class="w-2 h-2 rounded-full" [ngClass]="(isDarkMode$ | async) ? 'bg-purple-500/30' : 'bg-purple-400/40'"></span>
-                      <span class="w-2 h-2 rounded-full" [ngClass]="(isDarkMode$ | async) ? 'bg-purple-500/30' : 'bg-purple-400/40'"></span>
-                    </div>
-                  </div>
+                      <div class="absolute top-10 right-12 flex gap-2">
+                        <span class="w-2 h-2 rounded-full" [ngClass]="(isDarkMode$ | async) ? 'bg-purple-500/30' : 'bg-purple-400/40'"></span>
+                        <span class="w-2 h-2 rounded-full" [ngClass]="(isDarkMode$ | async) ? 'bg-purple-500/30' : 'bg-purple-400/40'"></span>
+                      </div>
+                    }
 
-                  @if (activeCategory() === category.id) {
-                    <div class="fixed inset-0 lg:absolute lg:-inset-12 z-[100] p-4 lg:p-0 animate-hyper-reveal">
-                      <div class="w-full h-full backdrop-blur-3xl rounded-[2.5rem] md:rounded-[4rem] border p-6 md:p-10 flex flex-col shadow-2xl transition-all duration-500"
-                        [ngClass]="(isDarkMode$ | async)
-                          ? 'bg-purple-950/90 border-purple-500/30 shadow-[0_0_100px_rgba(168,85,247,0.3)]'
-                          : 'bg-purple-50/95 border-purple-200 shadow-[0_40px_100px_rgba(168,85,247,0.15)]'">
-
-                        <div class="flex justify-between items-start mb-6 md:mb-10">
+                    <!-- Expanded state -->
+                    @if (activeCategory() === category.id) {
+                      <div class="w-full animate-hyper-reveal">
+                        <div class="flex justify-between items-start mb-8 md:mb-12">
                           <div class="space-y-2">
                             <p class="font-mono text-[10px] uppercase tracking-[0.3em]"
                               [ngClass]="(isDarkMode$ | async) ? 'text-purple-300' : 'text-purple-600'">
                               System.Category_{{ category.id }}
                             </p>
-                            <h4 class="text-3xl md:text-4xl font-black italic tracking-tighter"
+                            <h4 class="text-3xl md:text-5xl font-black italic tracking-tighter"
                               [ngClass]="(isDarkMode$ | async) ? 'text-white' : 'text-purple-900'">
                               {{ category.title }}
                             </h4>
                           </div>
 
                           <button (click)="$event.stopPropagation(); toggleCategory(null)"
-                                  class="w-10 h-10 md:w-14 md:h-14 flex items-center justify-center rounded-2xl border transition-all duration-500 hover:rotate-90 group/close"
+                                  class="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-2xl border transition-all duration-500 hover:rotate-90 group/close flex-shrink-0"
                                   [ngClass]="(isDarkMode$ | async)
                                     ? 'border-purple-500/30 text-white hover:bg-purple-500'
                                     : 'border-purple-200 text-purple-600 hover:bg-purple-600 hover:text-white'">
@@ -98,30 +106,31 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
                           </button>
                         </div>
 
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-6 overflow-y-auto custom-scrollbar pr-2 md:pr-4 max-h-[70vh] md:max-h-none">
+                        <!-- Skills grid - no scrolling needed -->
+                        <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 pb-4">
                           @for (tech of category.skills; track tech; let i = $index) {
-                            <div class="group/item relative overflow-hidden flex flex-col items-center justify-center p-4 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] border transition-all duration-500 animate-cascade min-h-[110px] md:min-h-[160px]"
-                                [style.animation-delay]="i * 50 + 'ms'"
+                            <div class="group/item relative overflow-hidden flex flex-col items-center justify-center p-5 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] border transition-all duration-500 animate-cascade min-h-[130px] md:min-h-[160px]"
+                                [style.animation-delay]="i * 40 + 'ms'"
                                 [ngClass]="(isDarkMode$ | async)
-                                  ? 'bg-purple-900/20 border-purple-500/20 hover:border-purple-400'
-                                  : 'bg-white/60 border-purple-100 shadow-sm hover:border-purple-400 hover:bg-white'">
+                                  ? 'bg-purple-900/20 border-purple-500/20 hover:border-purple-400 hover:bg-purple-500/10'
+                                  : 'bg-white/60 border-purple-100 shadow-sm hover:border-purple-400 hover:bg-white hover:shadow-lg'">
 
                               <img [src]="'assets/techs/' + tech.toLowerCase() + '.png'"
                                   [alt]="tech"
                                   (error)="handleImgError($event)"
-                                  class="w-10 h-10 md:w-14 md:h-14 object-contain mb-2 md:mb-5 transition-transform duration-500 group-hover/item:scale-110"
-                                  [ngClass]="(isDarkMode$ | async) ? 'filter drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]' : ''">
+                                  class="w-12 h-12 md:w-16 md:h-16 object-contain mb-3 md:mb-4 transition-transform duration-500 group-hover/item:scale-110"
+                                  [ngClass]="(isDarkMode$ | async) ? 'filter drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]' : ''">
 
-                              <span class="block text-[9px] md:text-xs font-mono font-bold uppercase tracking-widest text-center transition-colors"
-                                [ngClass]="(isDarkMode$ | async) ? 'text-purple-100 group-hover/item:text-white' : 'text-purple-800'">
+                              <span class="block text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest text-center transition-colors"
+                                [ngClass]="(isDarkMode$ | async) ? 'text-purple-100 group-hover/item:text-white' : 'text-purple-800 group-hover/item:text-purple-600'">
                                 {{ tech }}
                               </span>
                             </div>
                           }
                         </div>
                       </div>
-                    </div>
-                  }
+                    }
+                  </div>
                 </div>
               </div>
             }
@@ -137,17 +146,15 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
       filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.4));
     }
     @keyframes hyper-reveal {
-      0% { opacity: 0; transform: scale(0.9) translateY(40px); filter: blur(20px); }
+      0% { opacity: 0; transform: scale(0.98) translateY(20px); filter: blur(10px); }
       100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0px); }
     }
-    .animate-hyper-reveal { animation: hyper-reveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-hyper-reveal { animation: hyper-reveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     @keyframes cascade {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% { opacity: 0; transform: translateY(15px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
-    .animate-cascade { animation: cascade 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #a855f7; border-radius: 10px; }
+    .animate-cascade { animation: cascade 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
   `]
 })
 export class SkillsComponent {
