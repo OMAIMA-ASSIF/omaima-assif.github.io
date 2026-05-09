@@ -190,11 +190,10 @@ export class ProjectsComponent {
       folderName: 'KritW9rit',
       images: [
         '1.PNG', '3.PNG', '4.PNG', '5.PNG',
-        'admin/1.PNG', 'admin/2.PNG', 'admin/3.PNG', 'admin/4.PNG', 'admin/5.PNG', 'admin/6.PNG', 'admin/7.PNG', 'admin/8.PNG',
-        'owner/1.PNG', 'owner/2.PNG', 'owner/3.PNG', 'owner/4.PNG', 'owner/5.PNG',
+        'admin/1.PNG',
         'student/3.PNG', 'student/10.PNG', 'student/13.PNG', 'student/14.PNG', 'student/17.PNG', 'student/18.PNG', 'student/19.PNG', 'student/20.PNG',
-        'student/21.1.png', 'student/23.PNG', 'student/24.PNG', 'student/25.PNG', 'student/26.PNG', 'student/27.PNG', 'student/28.PNG',
-        'student/30.PNG', 'student/31.PNG', 'student/32.PNG', 'student/33.PNG', 'student/34.PNG', 'student/35.PNG', 'student/36.PNG'
+         'student/24.PNG','student/27.PNG','owner/1.PNG', 'owner/2.PNG', 'owner/3.PNG', 'owner/4.PNG', 'owner/5.PNG',
+        'student/31.PNG', 'student/35.PNG'
       ],
       description: 'End-to-end development of a comprehensive Moroccan student platform, built from scratch. Architected the entire system, selected the technical stack, and implemented core features including instant messaging, security, and scaling infrastructure.',
       technologies: ['Node.js', 'Express', 'Angular', 'MongoDB', 'JWT', 'Socket.io']
