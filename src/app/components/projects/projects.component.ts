@@ -188,10 +188,8 @@ export class ProjectsComponent {
     {
       title: 'KritW9rit',
       folderName: 'KritW9rit',
-      images: [
-        '1.PNG', '3.PNG', '4.PNG', '5.PNG',
-        'admin/1.PNG',
-        'student/3.PNG', 'student/10.PNG', 'student/13.PNG', 'student/14.PNG', 'student/17.PNG', 'student/18.PNG', 'student/19.PNG', 'student/20.PNG',
+      images: ['1.PNG', '3.PNG', '4.PNG', '5.PNG',
+        'admin/1.PNG','student/3.PNG', 'student/10.PNG', 'student/13.PNG', 'student/14.PNG', 'student/17.PNG', 'student/18.PNG', 'student/19.PNG', 'student/20.PNG',
          'student/24.PNG','student/27.PNG','owner/1.PNG', 'owner/2.PNG', 'owner/3.PNG', 'owner/4.PNG', 'owner/5.PNG',
         'student/31.PNG', 'student/35.PNG'
       ],
