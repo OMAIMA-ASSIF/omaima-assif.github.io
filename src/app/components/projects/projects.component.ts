@@ -230,7 +230,7 @@ export class ProjectsComponent {
     {
       title: 'Client Portal',
       folderName: 'ClientPortal',
-      images: ['admin1.PNG', 't1.PNG', 't2.PNG', 't3.PNG', 't5.PNG'],
+      images: ['t1.PNG','t1.PNG','t3.PNG','admin1.PNG', 't5.PNG'],
       description: 'Enterprise bridge for SUEZ Morocco, providing clients autonomous access to Dynamics 365 ERP data via secure middleware API.',
       technologies: ['D365', 'PostgreSQL', 'React.js', 'Node.js', 'OData', 'TailwindCSS']
     },
@@ -245,7 +245,7 @@ export class ProjectsComponent {
       title: 'SmartGlow',
       folderName: 'SmartGlow',
       images: ['1.PNG', '2.PNG', '3.PNG', '4.PNG', '5.PNG', '6.PNG', '7.PNG'],
-      description: 'IoT-based smart lighting system with adaptive brightness and color control, enhancing energy efficiency and ambiance.',
+      description: 'an intelligent skincare ecosystem that uses generative AI to provide hyper-personalized beauty routines. By combining selfie-based skin diagnostics with real-time environmental data like pollution and UV levels, the platform dynamically adjusts treatments to protect the skin against local climate stressors. It goes beyond simple analysis by checking product ingredient compatibility and delivering humanized coaching through voice technology and WhatsApp integration.',
       technologies: ['Arduino', 'ESP8266', 'MQTT', 'Python']
     }
   ];
