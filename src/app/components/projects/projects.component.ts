@@ -240,6 +240,13 @@ export class ProjectsComponent {
       images: ['1.jpg', '2.jpg'],
       description: 'Machine learning application predicting booking cancellations to help hotel management optimize occupancy rates.',
       technologies: ['Python', 'Scikit-Learn', 'Flask', 'Machine Learning']
+    },
+    {
+      title: 'SmartGlow',
+      folderName: 'SmartGlow',
+      images: ['1.PNG', '2.PNG', '3.PNG', '4.PNG', '5.PNG', '6.PNG', '7.PNG'],
+      description: 'IoT-based smart lighting system with adaptive brightness and color control, enhancing energy efficiency and ambiance.',
+      technologies: ['Arduino', 'ESP8266', 'MQTT', 'Python']
     }
   ];
 }
