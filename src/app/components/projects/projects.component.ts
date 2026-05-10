@@ -204,13 +204,6 @@ export class ProjectsComponent {
       technologies: ['Qdrant', 'RAG', 'Langchain', 'FastAPI', 'Mistral AI', 'React', 'MCP Server', 'MongoDB', 'Expressjs']
     },
     {
-      title: 'YourData',
-      folderName: 'YourData',
-      images: ['1.jpg', '2.jpg', '3.jpg'],
-      description: 'Interactive web application for CSV dataset visualization. Features intuitive filtering, insightful charts, and automated data preprocessing.',
-      technologies: ['Streamlit', 'Pandas']
-    },
-    {
       title: 'AskAlly',
       folderName: 'AskAlly',
       images: ['1751137865818.jpg'],
