@@ -197,6 +197,13 @@ export class ProjectsComponent {
       technologies: ['Node.js', 'Express', 'Angular', 'MongoDB', 'JWT', 'Socket.io']
     },
     {
+      title : 'MediSafe',
+      folderName : 'MediSafe',
+      images : ['1.jpeg', '2.jpeg'],
+      description : 'A mobile application designed to help users manage their medications effectively. It provides features such as medication reminders and notifications, dosage tracking, and a comprehensive medication database to ensure users never miss a dose and can easily access information about their prescriptions.',
+      technologies : ['Java', 'XML', 'FireBase', 'SQLite']
+    },
+    {
       title: 'Enerassist',
       folderName: 'Enerassist',
       images: ['1.PNG', '2.PNG', '3.PNG', '4.PNG', '5.PNG', '6.PNG', '7.PNG'],
